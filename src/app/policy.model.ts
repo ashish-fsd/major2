@@ -1,7 +1,7 @@
 export class Policy {
-    id: number;
+    id: any;
     name: string;
-    location: string;
-    images : any;
+    Location: string;
+    Image : any;
     address : any
 }

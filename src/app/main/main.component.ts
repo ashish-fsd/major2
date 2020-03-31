@@ -3,8 +3,9 @@ import { ConnectorService } from 'src/app/connector.service';
 import { Policy } from 'src/app/policy.model';
 import { AuthService } from '../auth.service'
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {ViewChild,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -13,9 +14,12 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class MainComponent implements OnInit {
 
+  plantData : any
   policies: Policy[];
   IssueForm: FormGroup;
-  constructor(private policyService: ConnectorService,private authService : AuthService,private afStorage : AngularFireStorage,private activatedRoute: ActivatedRoute,private fb: FormBuilder) { }
+  @ViewChild('myclose', {static: false}) pRef: ElementRef;
+  constructor(private policyService: ConnectorService,private authService : AuthService,private afStorage : AngularFireStorage,private activatedRoute: ActivatedRoute,private fb: FormBuilder,public  router:  Router) { }
+  
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.policies = data.data;
@@ -45,5 +49,17 @@ export class MainComponent implements OnInit {
  
   onIssue(plant){
     console.log(plant)
+  }
+
+  onSubmit(){
+    if (this.IssueForm.invalid) {
+      return;
+    }
+    else{
+      const info = {"Name" : this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value,"Date" : this.IssueForm.controls.date.value}
+      this.pRef.nativeElement.click()
+      this.policyService.setInfo(info)
+      this.router.navigate(['certificate']);
+    }
   }
 }

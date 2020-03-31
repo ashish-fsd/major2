@@ -19,6 +19,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { ResolvemainService } from './resolvemain.service';
+import { ResolvecerificateService} from './resolvecerificate.service';
 import { MainwindowComponent } from './mainwindow/mainwindow.component';
 
 
@@ -32,6 +33,11 @@ const routes: Routes = [
     component: MainwindowComponent,
     resolve : { data: ResolvemainService }
   },
+  {
+    path: "certificate",
+    component : CerticateComponent,
+    resolve : { data: ResolvecerificateService}
+  }
 ]
 
 @NgModule({

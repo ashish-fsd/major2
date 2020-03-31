@@ -16,7 +16,8 @@ export class ResolvemainService implements Resolve<any> {
     this.policyService.getPolicies().snapshotChanges().subscribe(data => {
       data.forEach(e => {
         let item = e.payload.doc.data() as Policy
-        const task = this.afStorage.ref('/' + item.images.im.path.segments[7] + '/' + item.images.im.path.segments[8]).getDownloadURL()
+        item.id = e.payload.doc.id
+        const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
         task.subscribe(url => {
           if (url) {
             item.address = url

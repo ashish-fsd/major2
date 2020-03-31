@@ -15,9 +15,10 @@ export class ConnectorService {
 
   policies: Policy[] = []
   products: any
+  personData : any
 
   getPolicies() {
-    return this.firestore.collection('Plants')
+    return this.firestore.collection('plants')
   }
 
 
@@ -33,6 +34,14 @@ export class ConnectorService {
 
   deletePolicy(policyId: string) {
     this.firestore.doc('policies/' + policyId).delete();
+  }
+
+  setInfo(data){
+    this.personData = data;
+  }
+
+  getInfo(){
+    return this.personData;
   }
 
 }
