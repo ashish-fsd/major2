@@ -12,17 +12,19 @@ export class CerticateComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) { }
   info : any
+  value : any
   myname : string = "Ashish Kumar Bansal"
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.info = data.data;
+      this.value = this.info.url
       console.log(this.info)
     });
   }
 
 public convetToPDF()
 {
-var data = document.getElementById('contentToConvert');
+var data = document.getElementById('page-container');
 html2canvas(data).then(canvas => {
 // Few necessary setting options
 var imgWidth = 208;

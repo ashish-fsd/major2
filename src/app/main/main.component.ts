@@ -48,6 +48,7 @@ export class MainComponent implements OnInit {
   }
  
   onIssue(plant){
+    this.plantData = plant;
     console.log(plant)
   }
 
@@ -56,7 +57,7 @@ export class MainComponent implements OnInit {
       return;
     }
     else{
-      const info = {"Name" : this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value,"Date" : this.IssueForm.controls.date.value}
+      const info = {"Name" : this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value,"Date" : this.IssueForm.controls.date.value,"url" : this.plantData.id}
       this.pRef.nativeElement.click()
       this.policyService.setInfo(info)
       this.router.navigate(['certificate']);

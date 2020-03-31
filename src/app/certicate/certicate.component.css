@@ -1,5 +1,4 @@
 #sidebar {
-    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -10,7 +9,6 @@
 }
 
 #page-container {
-    position: absolute;
     top: 0;
     left: 0;
     margin: 0;
@@ -462,7 +460,7 @@
 }
 
 .w0 {
-    width: 720.000000px;
+    /* width: 720.000000px; */
 }
 
 .x0 {
@@ -479,6 +477,13 @@
 
 .x7 {
     left: 193.322769px;
+}
+
+.x8{
+    left: 540px;
+}
+.y8{
+    bottom: 340px;
 }
 
 .x5 {

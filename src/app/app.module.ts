@@ -21,6 +21,7 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { ResolvemainService } from './resolvemain.service';
 import { ResolvecerificateService} from './resolvecerificate.service';
 import { MainwindowComponent } from './mainwindow/mainwindow.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 const routes: Routes = [
@@ -59,7 +60,8 @@ const routes: Routes = [
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    QRCodeModule
   ],
   providers: [AngularFirestore,AuthService,AngularFireStorage],
   bootstrap: [AppComponent]
