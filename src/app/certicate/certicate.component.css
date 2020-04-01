@@ -86,7 +86,8 @@
     background-color: white;
     overflow: hidden;
     margin: 0;
-    border: 0
+    border: 0;
+    width: 60%;
 }
 
 .pc {
