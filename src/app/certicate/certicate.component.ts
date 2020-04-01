@@ -27,7 +27,7 @@ public convetToPDF()
 var data = document.getElementById('page-container');
 html2canvas(data).then(canvas => {
 // Few necessary setting options
-var imgWidth = 290;
+var imgWidth = 270;
 var pageHeight = 295;
 var imgHeight = canvas.height * imgWidth / canvas.width;
 var heightLeft = imgHeight;
