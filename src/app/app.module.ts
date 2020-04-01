@@ -22,6 +22,9 @@ import { ResolvemainService } from './resolvemain.service';
 import { ResolvecerificateService} from './resolvecerificate.service';
 import { MainwindowComponent } from './mainwindow/mainwindow.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { IssuedMainComponent } from './issued-main/issued-main.component';
+import { ResolvemainissueService } from './resolvemainissue.service';
+
 
 
 const routes: Routes = [
@@ -32,7 +35,18 @@ const routes: Routes = [
   {
     path: "main",
     component: MainwindowComponent,
-    resolve : { data: ResolvemainService }
+    children : [
+      {
+        path : "",
+        component : MainComponent,
+        resolve : {data : ResolvemainService}
+      },
+      {
+        path : "issuedCerificate",
+        component : IssuedMainComponent,
+        resolve : { data : ResolvemainissueService }
+      }
+    ]
   },
   {
     path: "certificate",
@@ -51,6 +65,7 @@ const routes: Routes = [
     MainComponent,
     HomeComponent,
     MainwindowComponent,
+    IssuedMainComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,8 +32,8 @@ export class ConnectorService {
     this.firestore.doc('policies/' + policy.id).update(policy);
   }
 
-  deletePolicy(policyId: string) {
-    this.firestore.doc('policies/' + policyId).delete();
+  deletePlant(policyId: string) {
+    this.firestore.doc('plants/' + policyId).delete();
   }
 
   setInfo(data){
