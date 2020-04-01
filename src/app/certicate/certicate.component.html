@@ -63,25 +63,25 @@
             function I(a, b, c, d) {
                 var e = a.c; if (!(b >= e.length || (e = e[b], e.loaded || a.i[b]))) {
                     var e = e.page, g = e.getAttribute("data-page-url"); if (g) {
-                    a.i[b] = !0; var h = a.q.cloneNode(); h.classList.add("active"); e.appendChild(h); var f = a, k = new XMLHttpRequest; k.open("GET", g, !0); k.onreadystatechange = function () {
-                        if (4 == k.readyState) {
-                            if (200 === k.status) {
-                                var a = document.createElement("div"); a.innerHTML = k.responseText; for (var c = null, a = a.childNodes, g = 0, e = a.length; g < e; ++g) {
-                                    var h = a[g]; if (h.nodeType === Node.ELEMENT_NODE && h.classList.contains("pf")) {
-                                        c =
-                                        h; break
-                                    }
-                                } a = f.c[b]; f.a.replaceChild(c, a.page); a = new y(c); f.c[b] = a; A(a); a.d(f.scale); w(c.getElementsByClassName("bi")); F(f, !1); d && d(a)
-                            } delete f.i[b]
-                        }
-                    }; k.send(null)
+                        a.i[b] = !0; var h = a.q.cloneNode(); h.classList.add("active"); e.appendChild(h); var f = a, k = new XMLHttpRequest; k.open("GET", g, !0); k.onreadystatechange = function () {
+                            if (4 == k.readyState) {
+                                if (200 === k.status) {
+                                    var a = document.createElement("div"); a.innerHTML = k.responseText; for (var c = null, a = a.childNodes, g = 0, e = a.length; g < e; ++g) {
+                                        var h = a[g]; if (h.nodeType === Node.ELEMENT_NODE && h.classList.contains("pf")) {
+                                            c =
+                                                h; break
+                                        }
+                                    } a = f.c[b]; f.a.replaceChild(c, a.page); a = new y(c); f.c[b] = a; A(a); a.d(f.scale); w(c.getElementsByClassName("bi")); F(f, !1); d && d(a)
+                                } delete f.i[b]
+                            }
+                        }; k.send(null)
                     } void 0 === c && (c = a.b.preload_pages); 0 < --c && (f = a, setTimeout(function () { I(f, b + 1, c) }, 0))
                 }
             } function L(a) { for (var b = [], c = {}, d = a.a.childNodes, e = 0, g = d.length; e < g; ++e) { var h = d[e]; h.nodeType === Node.ELEMENT_NODE && h.classList.contains("pf") && (h = new y(h), b.push(h), c[h.r] = b.length - 1) } a.c = b; a.n = c }
             function E(a) {
-            a.sidebar = document.getElementById(a.b.sidebar_id); a.outline = document.getElementById(a.b.outline_id); a.a = document.getElementById(a.b.container_id); a.q = document.getElementsByClassName(a.b.loading_indicator_cls)[0]; for (var b = !0, c = a.outline.childNodes, d = 0, e = c.length; d < e; ++d)if ("UL" === c[d].nodeName) { b = !1; break } b || a.sidebar.classList.add("opened"); L(a); 0 != a.c.length && (w(document.getElementsByClassName("bi")), a.b.key_handler && J(a), a.b.hashchange_handler && window.addEventListener("hashchange",
-                function () { G(a, document.location.hash.substring(1)) }, !1), a.a.addEventListener("scroll", function () { var b = a.c, c = b.length; if (!(2 > c)) { for (var d = a.a, e = d.scrollTop, d = e + d.clientHeight, l = -1, m = c, n = m - l; 1 < n;) { var p = l + Math.floor(n / 2), n = b[p].page; n.offsetTop + n.clientTop + n.clientHeight >= e ? m = p : l = p; n = m - l } a.l = m; for (var p = l = a.e, D = 0; m < c; ++m) { var n = b[m].page, u = n.offsetTop + n.clientTop, n = n.clientHeight; if (u > d) break; n = (Math.min(d, u + n) - Math.max(e, u)) / n; if (m === l && 1E-6 >= Math.abs(n - 1)) { p = l; break } n > D && (D = n, p = m) } a.e = p } F(a, !0) },
-                    !1), [a.a, a.outline].forEach(function (b) { b.addEventListener("click", a.p.bind(a), !1) }), K(a))
+                a.sidebar = document.getElementById(a.b.sidebar_id); a.outline = document.getElementById(a.b.outline_id); a.a = document.getElementById(a.b.container_id); a.q = document.getElementsByClassName(a.b.loading_indicator_cls)[0]; for (var b = !0, c = a.outline.childNodes, d = 0, e = c.length; d < e; ++d)if ("UL" === c[d].nodeName) { b = !1; break } b || a.sidebar.classList.add("opened"); L(a); 0 != a.c.length && (w(document.getElementsByClassName("bi")), a.b.key_handler && J(a), a.b.hashchange_handler && window.addEventListener("hashchange",
+                    function () { G(a, document.location.hash.substring(1)) }, !1), a.a.addEventListener("scroll", function () { var b = a.c, c = b.length; if (!(2 > c)) { for (var d = a.a, e = d.scrollTop, d = e + d.clientHeight, l = -1, m = c, n = m - l; 1 < n;) { var p = l + Math.floor(n / 2), n = b[p].page; n.offsetTop + n.clientTop + n.clientHeight >= e ? m = p : l = p; n = m - l } a.l = m; for (var p = l = a.e, D = 0; m < c; ++m) { var n = b[m].page, u = n.offsetTop + n.clientTop, n = n.clientHeight; if (u > d) break; n = (Math.min(d, u + n) - Math.max(e, u)) / n; if (m === l && 1E-6 >= Math.abs(n - 1)) { p = l; break } n > D && (D = n, p = m) } a.e = p } F(a, !0) },
+                        !1), [a.a, a.outline].forEach(function (b) { b.addEventListener("click", a.p.bind(a), !1) }), K(a))
             } q.Viewer = B;
         })();
     </script>
@@ -94,12 +94,12 @@
 </head>
 
 <body>
-    <button type="button" class="btn btn-dark m-3" (click)= "convetToPDF()">Convert</button>
+    <button type="button" class="btn btn-dark m-3" (click)="convetToPDF()">Convert</button>
 
     <div id="sidebar">
     </div>
-     
-    <div id="page-container">
+
+    <div >
         <div id="pf1" class="pf w0 h0" id="page-container">
             <div class="pc pc1 w0 h0">
                 <img id="myImage" class="bi x0 y0 w0 h0" alt=""
