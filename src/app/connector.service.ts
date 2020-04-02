@@ -21,10 +21,8 @@ export class ConnectorService {
     return this.firestore.collection('plants')
   }
 
-
-
-  createPolicy(policy: Policy) {
-    return this.firestore.collection('policies').add(policy);
+  createPlant(data,id) {
+    return this.firestore.collection('plants').doc(id).set(data);
   }
 
   updatePolicy(policy: Policy) {

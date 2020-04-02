@@ -51,7 +51,6 @@ export class MainComponent implements OnInit {
       const info = {"Name" : this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value,"Date" : this.IssueForm.controls.date.value,"url" : this.plantData.id}
       this.plantData.issuedTo = this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value;
       this.plantData.issueDate = this.IssueForm.controls.date.value
-      this.plantData.address = "";
       this.pRef.nativeElement.click()
       this.generateCertificate();
       this.policyService.setInfo(info)

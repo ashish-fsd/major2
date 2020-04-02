@@ -8,8 +8,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let policy of issuedData">
-                <td>{{policy.id}}</td>
+            <tr *ngFor="let policy of issuedData;let i = index">
+                <td>{{i+1}}</td>
                 <td>
                     <div class="card mb-3" style="max-width: 600px;">
                         <div class="row no-gutters">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </td>
-                <td><button type="button" class="btn " (click)="onIssue(policy)">Move Back</button></td>
+                <td><button type="button" class="btn " (click)="moveBack(policy)">Move Back</button></td>
             </tr>
         </tbody>
     </table>
