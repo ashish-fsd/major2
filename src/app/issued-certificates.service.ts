@@ -16,4 +16,8 @@ export class IssuedCertificatesService {
   createCertificate(data) {
     return this.firestore.collection('issuedPlants').doc(data.id).set(data);
   }
+
+  deleteCertificate(id) {
+    this.firestore.doc('issuedPlants/' + id).delete();
+  }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConnectorService } from '../connector.service';
+import { IssuedCertificatesService  } from "../issued-certificates.service";
 
 @Component({
   selector: 'app-issued-main',
@@ -8,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class IssuedMainComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute,private connect : ConnectorService,private issuedCetificate : IssuedCertificatesService) { }
 
   issuedData : any = []
 
@@ -17,6 +19,19 @@ export class IssuedMainComponent implements OnInit {
       this.issuedData = data.data;
       console.log(data)
     });
+  }
+
+  moveBack(data){
+    const info = {
+      "Name" : data.Name,
+      "Location" : data.Location,
+      "Latitude" : data.Latitude,
+      "Longitude" : data.Longitude,
+      "Image" : data.Image
+    }
+    this.connect.createPlant(info,data.id);
+    this.issuedCetificate.deleteCertificate(data.id);
+    console.log(info)
   }
 
 }

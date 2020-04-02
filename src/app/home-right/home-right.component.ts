@@ -17,7 +17,7 @@ export class HomeRightComponent implements OnInit {
   ngOnInit() {
     this.loginform = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/\d/)]]
+      password: ['', [Validators.required, Validators.minLength(6),Validators.pattern(/\d/)]]
     });
   }
 
