@@ -13,6 +13,8 @@ import { pipe } from 'rxjs';
 export class ResolvemainService implements Resolve<any> {
 
   constructor(private policyService: ConnectorService,private authService : AuthService,private afStorage : AngularFireStorage) {
+    debugger;
+    this.policies = []
     this.policyService.getPolicies().snapshotChanges().subscribe(data => {
       data.forEach(e => {
         let item = e.payload.doc.data() as Policy
@@ -33,6 +35,8 @@ export class ResolvemainService implements Resolve<any> {
   item$;
 
   resolve() {
+    debugger;
+    console.log(this.policies)
     return this.policies
   }
 }
