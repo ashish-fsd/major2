@@ -112,7 +112,7 @@
                 <div class="t m0 x6 h2 y6 ff1 fs1 fc0 sc0 ls0 ws0">{{info.Date}}</div>
                 <div class="t m0 x7 h4 y7 ff1 fs3 fc0 sc0 ls0 ws0 ml-0" style="text-transform: capitalize;">{{info.Name}}</div>
                 <div class="t m0 x8 h4 y8 ff1 fs3 fc0 sc0 ls0 ws0 ml-0">
-                    <qrcode [qrdata]="value" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                    <qrcode [qrdata]="routeurl" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'url'"></qrcode>
                 </div>
             </span>
             <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>

@@ -13,11 +13,12 @@ export class CerticateComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
   info : any
   value : any
-  myname : string = "Ashish Kumar Bansal"
+  routeurl : any
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.info = data.data;
       this.value = this.info.url
+      this.routeurl = `http://localhost:4200/user/${this.value}`
       console.log(this.info)
     });
   }

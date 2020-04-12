@@ -12,6 +12,7 @@ export class UserwindowComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private afStorage: AngularFireStorage) { }
   viewdata : any
   map:any
+  gmapurl: any
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.viewdata = data.data;
@@ -22,6 +23,8 @@ export class UserwindowComponent implements OnInit {
             this.viewdata.address = url;
             console.log(this.viewdata)
           }
+          this.gmapurl = `https://www.google.com/maps/search/?api=1&query=${this.viewdata.Location.F},${this.viewdata.Location.V}`
+          console.log(this.gmapurl)
           this.setCenter(this.viewdata.Location.V,this.viewdata.Location.F);
           this.add_map_point(this.viewdata.Location.V,this.viewdata.Location.F);
         })
