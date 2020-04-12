@@ -24,6 +24,12 @@ import { MainwindowComponent } from './mainwindow/mainwindow.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { IssuedMainComponent } from './issued-main/issued-main.component';
 import { ResolvemainissueService } from './resolvemainissue.service';
+import { UserwindowComponent } from './userwindow/userwindow.component';
+import { UserleftComponent } from './userleft/userleft.component';
+import { UserrightComponent } from './userright/userright.component';
+import { UsersideresolveService } from './usersideresolve.service';
+import { AgmCoreModule } from '@agm/core';
+
 
 
 
@@ -52,6 +58,11 @@ const routes: Routes = [
     path: "certificate",
     component : CerticateComponent,
     resolve : { data: ResolvecerificateService}
+  },
+  {
+    path: "user/:id",
+    component : UserwindowComponent,
+    resolve : { data: UsersideresolveService}
   }
 ]
 
@@ -66,6 +77,9 @@ const routes: Routes = [
     HomeComponent,
     MainwindowComponent,
     IssuedMainComponent,
+    UserwindowComponent,
+    UserleftComponent,
+    UserrightComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +90,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    QRCodeModule
+    QRCodeModule,
   ],
   providers: [AngularFirestore,AuthService,AngularFireStorage],
   bootstrap: [AppComponent]
