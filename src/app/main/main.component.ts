@@ -26,6 +26,7 @@ export class MainComponent implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.policies = []
       this.policies = data.data;
+      console.log(data.data)
     });
     this.IssueForm = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -48,19 +49,38 @@ export class MainComponent implements OnInit {
       return;
     }
     else{
+  
       const info = {"Name" : this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value,"Date" : this.IssueForm.controls.date.value,"url" : this.plantData.id}
       this.plantData.issuedTo = this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value;
       this.plantData.issueDate = this.IssueForm.controls.date.value
       this.pRef.nativeElement.click()
       this.generateCertificate();
-      this.policyService.setInfo(info)
+      this.policyService.setInfo(info);
+      // this.getPlants();
       this.router.navigate(['certificate']);
     }
   }
 
   generateCertificate(){
     this.policyService.deletePlant(this.plantData.id);
-    this.issue.createCertificate(this.plantData)
-    
+    this.issue.createCertificate(this.plantData)    
+  }
+
+  getPlants(){
+    this.policies = [];
+    this.policyService.getPolicies().snapshotChanges().subscribe(data => {
+      data.forEach(e => {
+        let item = e.payload.doc.data() as Policy
+        item.id = e.payload.doc.id
+        const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
+        task.subscribe(url => {
+          if (url) {
+            item.address = url
+          }
+        })
+        this.policies.push(item)
+      })
+    })
+
   }
 }

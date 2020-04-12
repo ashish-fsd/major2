@@ -12,8 +12,16 @@ import { pipe } from 'rxjs';
 })
 export class ResolvemainService implements Resolve<any> {
 
+  policies: Policy[] = []
+  downloadURL = [];
+  item$;
+  
   constructor(private policyService: ConnectorService,private authService : AuthService,private afStorage : AngularFireStorage) {
+
+
     this.policyService.getPolicies().snapshotChanges().subscribe(data => {
+      debugger;
+      this.policies = []
       data.forEach(e => {
         let item = e.payload.doc.data() as Policy
         item.id = e.payload.doc.id
@@ -28,11 +36,9 @@ export class ResolvemainService implements Resolve<any> {
     })
    }
 
-  policies: Policy[] = []
-  downloadURL = [];
-  item$;
 
   resolve() {
+    console.log(this.policies)
     return this.policies
   }
 }
