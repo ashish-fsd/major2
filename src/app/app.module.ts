@@ -25,8 +25,6 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { IssuedMainComponent } from './issued-main/issued-main.component';
 import { ResolvemainissueService } from './resolvemainissue.service';
 import { UserwindowComponent } from './userwindow/userwindow.component';
-import { UserleftComponent } from './userleft/userleft.component';
-import { UserrightComponent } from './userright/userright.component';
 import { UsersideresolveService } from './usersideresolve.service';
 import { AgmCoreModule } from '@agm/core';
 
@@ -78,8 +76,6 @@ const routes: Routes = [
     MainwindowComponent,
     IssuedMainComponent,
     UserwindowComponent,
-    UserleftComponent,
-    UserrightComponent,
   ],
   imports: [
     BrowserModule,

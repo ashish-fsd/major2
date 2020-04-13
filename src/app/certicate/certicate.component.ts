@@ -13,11 +13,12 @@ export class CerticateComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
   info : any
   value : any
-  myname : string = "Ashish Kumar Bansal"
+  routeurl : any
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.info = data.data;
       this.value = this.info.url
+      this.routeurl = `http://localhost:4200/user/${this.value}`
       console.log(this.info)
     });
   }
@@ -27,14 +28,14 @@ public convetToPDF()
 var data = document.getElementById('page-container');
 html2canvas(data).then(canvas => {
 // Few necessary setting options
-var imgWidth = 270;
+var imgWidth = 300;
 var pageHeight = 295;
 var imgHeight = canvas.height * imgWidth / canvas.width;
 var heightLeft = imgHeight;
  
 const contentDataURL = canvas.toDataURL('image/png')
 let pdf = new jspdf('l', 'mm', 'a4'); // A4 size page of PDF
-var position = 0;
+var position = 5;
 pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
 pdf.save('new-file.pdf'); // Generated PDF
 });

@@ -1,11 +1,21 @@
-<div class="row">
+<div class="row no-gutters">
     <div class="col-lg-7">
-        <div class="col-sm-2 pt-2">
-            <img class="pl-5" src="../../assets/images/icons8-tree-64.png" style="height: 50px;">
-        </div>
-        <div>
-            <img [src]= "viewdata.address" alt="..." style="height: 200px;width: 200px;">
-        </div>
+        <div class="card m-3">
+            <div class="card-header m-0" style="background-color: rgba(202, 251, 128, 0.644); padding: 15px;font-size: 37px;font-weight: 1000;text-transform: uppercase;font-family: serif;border: solid 2px black;">
+                Your plant data
+                <img class="float-right" src="../../assets/images/icons8-tree-64.png" style="height: 56px;">
+            </div>
+            <div class="card-body mt-3" style="border: solid 2px black;background-color: rgba(202, 251, 128, 0.644)">
+              <h5 class="card-title" style="text-transform: capitalize; font-weight: 700;">Issued To : {{viewdata.issuedTo}} <a [href]="gmapurl" class="btn btn-primary float-right" target="_blank">Reach out</a><br>Issued on : {{viewdata.issueDate}} </h5>
+              <div class="text-center mt-5" >
+                <img class="p-2" [src]= "viewdata.address" alt="..." style="height: 300px;width: 300px;border: solid 2px black;">
+              </div>
+              <h5 class="mt-4 text-center" style="font-weight: 600;line-height: 27px;"> Plant Name : {{viewdata.Name}} <br> Plant Location : ({{viewdata.Longitude}},{{viewdata.Latitude}}) <br> Issuing Authority :</h5>
+            </div>
+            <div class="card-footer mt-3 text-muted" style="border: solid 2px black;background-color: rgba(202, 251, 128, 0.644)">
+              2 days ago
+            </div>
+          </div>
     </div>
     <div class="col-lg-5">
         <div id="map" class="map" style="object-fit: cover;height: 100vh ">
