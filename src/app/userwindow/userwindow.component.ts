@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 declare var ol: any;
+declare var mylocation : any
 @Component({
   selector: 'app-userwindow',
   templateUrl: './userwindow.component.html',
@@ -13,6 +14,7 @@ export class UserwindowComponent implements OnInit {
   viewdata : any
   map:any
   gmapurl: any
+  mylocation : any
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.viewdata = data.data;
@@ -42,8 +44,28 @@ export class UserwindowComponent implements OnInit {
         zoom: 8
       })
     });
+    if (!navigator.geolocation) {
+      console.log('Geolocation is not supported by your browser');
+    } else {
+      navigator.geolocation.getCurrentPosition((position)=>{
+        this.mylocation = position
+      } )
+    } 
     
-    
+    // function success = (pos: any)=>{
+    //   this.mylatitude = pos.coords;
+    // }
+    //  function success(position) {
+    //   var userlatitude  = position.coords.latitude;
+    //   var userlongitude = position.coords.longitude;
+    //   myfun(userlongitude,userlatitude)
+    // }
+    // function error(){
+    //   console.log("sjhdjhjhkhk")
+    // }
+    // function myfun(a,b){
+    //   this.mylatitude = a
+    // }
   }
   setCenter(lat,lng) {
     var view = this.map.getView();
@@ -53,7 +75,6 @@ export class UserwindowComponent implements OnInit {
   }
 
   add_map_point(lat, lng) {
-    console.log(lat,lng)
     var marker = new ol.Feature({
       geometry: new ol.geom.Point(
         ol.proj.fromLonLat([lat,lng])
@@ -74,4 +95,18 @@ export class UserwindowComponent implements OnInit {
     this.map.addLayer(markerVectorLayer);
 
   };
+    pointmyLocation(){
+      console.log(this.mylocation.coords.latitude)
+      console.log(this.mylocation.coords.longitude)
+      // this.map.getView().setCenter(ol.proj.transform([this.mylocation.coords.latitude,this.mylocation.coords.longitude], 'EPSG:4326', 'EPSG:3857'))
+
+      // var olCoordinates = ol.proj.transform([this.mylocation.coords.latitude,this.mylocation.coords.longitude],"WGS84", "EPSG:900913")
+      // console.log(olCoordinates)
+      this.setCenter(parseFloat(this.mylocation.coords.longitude),parseFloat(this.mylocation.coords.latitude))
+      this.add_map_point(parseFloat(this.mylocation.coords.longitude),parseFloat(this.mylocation.coords.latitude))
+  }
+  backtosamelocation(){
+    this.setCenter(this.viewdata.Location.V,this.viewdata.Location.F)
+  }
+ 
 }
