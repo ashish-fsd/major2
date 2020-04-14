@@ -14,18 +14,35 @@ export class ResolvemainissueService implements Resolve<any>{
 
   constructor(private issueService: IssuedCertificatesService,private authService : AuthService,private afStorage : AngularFireStorage) {
     this.issueService.getIssuedplants().snapshotChanges().subscribe(data => {
-      data.forEach(e => {
-        let item = e.payload.doc.data() as Policy
-        item.id = e.payload.doc.id
-        const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
-        task.subscribe(url => {
-          if (url) {
-            item.address = url
-          }
+      if(this.issuedPlants.length == 0){
+        data.forEach(e => {
+          let item = e.payload.doc.data() as Policy
+          item.id = e.payload.doc.id
+          const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
+          task.subscribe(url => {
+            if (url) {
+              item.address = url
+            }
+          })
+          this.issuedPlants.push(item)
         })
-        this.issuedPlants.push(item)
-      })
+      }
+      else{
+        this.issuedPlants = []
+        data.forEach(e => {
+          let item = e.payload.doc.data() as Policy
+          item.id = e.payload.doc.id
+          const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
+          task.subscribe(url => {
+            if (url) {
+              item.address = url
+            }
+          })
+          this.issuedPlants.push(item)
+        })
+      }
     })
+      
    }
 
   resolve() {

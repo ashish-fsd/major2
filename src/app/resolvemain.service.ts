@@ -20,20 +20,51 @@ export class ResolvemainService implements Resolve<any> {
 
 
     this.policyService.getPolicies().snapshotChanges().subscribe(data => {
-      debugger;
-      this.policies = []
-      data.forEach(e => {
-        let item = e.payload.doc.data() as Policy
-        item.id = e.payload.doc.id
-        const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
-        task.subscribe(url => {
-          if (url) {
-            item.address = url
-          }
+      if(this.policies.length == 0){
+        data.forEach(e => {
+          let item = e.payload.doc.data() as Policy
+          item.id = e.payload.doc.id
+          const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
+          task.subscribe(url => {
+            if (url) {
+              item.address = url
+            }
+          })
+          this.policies.push(item)
         })
-        this.policies.push(item)
-      })
+      }
+      else{
+        this.policies = []
+        data.forEach(e => {
+          let item = e.payload.doc.data() as Policy
+          item.id = e.payload.doc.id
+          const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
+          task.subscribe(url => {
+            if (url) {
+              item.address = url
+            }
+          })
+          this.policies.push(item)
+        })
+      }
+      
     })
+    // else{
+    //   this.policyService.getPolicies().snapshotChanges().subscribe(data => {
+    //     this.policies = []
+    //     data.forEach(e => {
+    //       let item = e.payload.doc.data() as Policy
+    //       item.id = e.payload.doc.id
+    //       const task = this.afStorage.ref('pictures/' + item.Image).getDownloadURL()
+    //       task.subscribe(url => {
+    //         if (url) {
+    //           item.address = url
+    //         }
+    //       })
+    //       this.policies.push(item)
+    //     })
+    //   })
+    // }
    }
 
 

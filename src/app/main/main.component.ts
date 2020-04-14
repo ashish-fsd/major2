@@ -49,7 +49,6 @@ export class MainComponent implements OnInit {
       return;
     }
     else{
-  
       const info = {"Name" : this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value,"Date" : this.IssueForm.controls.date.value,"url" : this.plantData.id}
       this.plantData.issuedTo = this.IssueForm.controls.firstName.value + " " + this.IssueForm.controls.lastName.value;
       this.plantData.issueDate = this.IssueForm.controls.date.value
