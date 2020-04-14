@@ -9,13 +9,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent implements OnInit,AfterViewInit {
 
-  constructor(private authService : AuthService,public  router:  Router,public route:ActivatedRoute) { }
+  constructor(private authService : AuthService,public  router:  Router,public route:ActivatedRoute) {
+    this.authService.getData().subscribe(data => {
+      if((!data) || (data.uid != localStorage.getItem('uid'))){
+        this.router.navigate(['']);
+      }
+      else{
+        console.log("azs")
+        this.username = data.email;
+      }
+    })
+   }
   username : string
   @ViewChild('mynav', {static: false}) myRef: ElementRef;
   ngOnInit() {
-    if(localStorage.getItem("username")){
-      this.username = localStorage.getItem("username")
-    }
+       
   }
   ngAfterViewInit(){
     if(this.route.snapshot['_routerState'].url == "/main"){

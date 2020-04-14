@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-right',
@@ -10,7 +11,7 @@ import { AuthService } from '../auth.service'
 export class HomeRightComponent implements OnInit {
   loginform: FormGroup;
   error: any;
-  constructor(private fb: FormBuilder,private authService : AuthService) {
+  constructor(private fb: FormBuilder,private authService : AuthService,public  router:  Router) {
     
    }
 
@@ -32,7 +33,14 @@ export class HomeRightComponent implements OnInit {
     } else {
       const username = this.loginform.controls.username.value;
       const password = this.loginform.controls.password.value;
-      this.authService.login(username,password);
+      this.authService.login(username,password).then(value => {
+        console.log(value.user.uid)
+        localStorage.setItem('uid', value.user.uid);
+        this.router.navigate(['main']);
+      })
+      .catch(err => {
+        this.error = err.message;
+      });
     }
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-certicate',
@@ -10,7 +11,13 @@ import html2canvas from 'html2canvas';
 })
 export class CerticateComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute,private authService : AuthService,public  router:  Router) {
+    this.authService.getData().subscribe(data => {
+      if((!data) || (data.uid != localStorage.getItem('uid'))){
+        this.router.navigate(['']);
+      }
+    })
+   }
   info : any
   value : any
   routeurl : any

@@ -8,28 +8,23 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   user:  User;
+  username : string
   constructor(public  afAuth:  AngularFireAuth, public  router:  Router) { }
 
   login(email: string, password: string) {
-    this.afAuth
-      .auth
-      .signInWithEmailAndPassword(email, password)
-      .then(value => {
-        localStorage.setItem('username', email);
-        this.router.navigate(['main']);
-      })
-      .catch(err => {
-        console.log('Something went wrong:',err.message);
-      });
+    this.username = email;
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)    
   }
 
   getData(){
-    this.afAuth.authState.forEach(auth => {console.log(auth.uid)})
+    return this.afAuth.authState
      
   }
   logout(){
+    localStorage.removeItem('uid')
     this.afAuth.auth.signOut();
   }
 
