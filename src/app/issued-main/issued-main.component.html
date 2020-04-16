@@ -18,8 +18,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{policy.Name}}</h5>
-                                    <p class="card-text">City : {{policy.City}}<br> Latitude : {{policy.Latitude}}<br>Longitude : {{policy.Longitude}}<br>Name of Reciepient : {{policy.issuedTo}} <br> Date Issued : {{policy.issueDate}}.</p>
+                                    <h5 class="card-title" style="text-transform: capitalize;">{{policy.Name}}</h5>
+                                    <p class="card-text" style="text-transform: capitalize;">City : {{policy.City}}<br> Latitude : {{policy.Latitude}}<br>Longitude : {{policy.Longitude}}<br>Name of Reciepient : {{policy.issuedTo}} <br> Date Issued : {{policy.issueDate.toDate() | date: 'fullDate'}}</p>
                                     <p class="card-text"><small class="text-muted">Id : {{policy.id}}</small></p>
                                 </div>
                             </div>

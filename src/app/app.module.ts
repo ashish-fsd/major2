@@ -28,6 +28,11 @@ import { ResolvemainissueService } from './resolvemainissue.service';
 import { UserwindowComponent } from './userwindow/userwindow.component';
 import { UsersideresolveService } from './usersideresolve.service';
 import { AgmCoreModule } from '@agm/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 
 
@@ -89,7 +94,13 @@ const routes: Routes = [
     AngularFireAuthModule,
     QRCodeModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [AngularFirestore,AuthService,AngularFireStorage],
   bootstrap: [AppComponent]

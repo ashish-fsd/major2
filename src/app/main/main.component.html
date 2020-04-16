@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{policy.Name}}</h5>
+                                    <h5 class="card-title" style="text-transform: capitalize;">{{policy.Name}}</h5>
                                     <p class="card-text" style="text-transform: capitalize;">City : {{policy.City}}<br> Latitude : {{policy.Latitude}}<br>Longitude : {{policy.Longitude}}.</p>
                                     <p class="card-text"><small class="text-muted">Id : {{policy.id}}</small></p>
                                 </div>
@@ -45,13 +45,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="exampleInputEmail1" style="padding-top: 1px;">firstName</label>
+                                <label for="exampleInputEmail1" style="padding-top: 1px;">First Name</label>
                                 <input
                                   type="text"
                                   formControlName="firstName"
                                   class="form-control"
                                   aria-describedby="emailHelp"
-                                  placeholder="firstName"
+                                  placeholder="Enter your First Name"
                                   [ngClass]="{ 'is-invalid':f.firstName.touched && f.firstName.errors }"
                                 />
                                 <div *ngIf="f.firstName.touched && f.firstName.errors" class="invalid-feedback">
@@ -61,13 +61,13 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="exampleInputEmail1" style="padding-top: 1px;">lastName</label>
+                                <label for="exampleInputEmail1" style="padding-top: 1px;">Last Name</label>
                                 <input
                                   type="text"
                                   formControlName="lastName"
                                   class="form-control"
                                   aria-describedby="emailHelp"
-                                  placeholder="lastName"
+                                  placeholder="Enter your Last Name"
                                   [ngClass]="{ 'is-invalid':f.lastName.touched && f.lastName.errors }"
                                 />
                                 <div *ngIf="f.lastName.touched && f.lastName.errors" class="invalid-feedback">
@@ -77,7 +77,13 @@
                         </div>
                       </div>
                     <div class="form-group">
-                      <label for="date" style="padding-top: 1px;"
+                      <mat-form-field>
+                        <mat-label>Date</mat-label>
+                        <input [ngClass]="{ 'is-invalid':f.date.touched  &&  f.date.errors }" formControlName="date" matInput [matDatepicker]="myPicker"  placeholder="date">
+                        <mat-datepicker-toggle  matSuffix [for]="myPicker"></mat-datepicker-toggle>
+                        <mat-datepicker  #myPicker></mat-datepicker>
+                      </mat-form-field>
+                      <!-- <label for="date" style="padding-top: 1px;"
                         >date</label
                       >
                       <input
@@ -86,7 +92,7 @@
                         class="form-control"
                         placeholder="date"
                         [ngClass]="{ 'is-invalid':f.date.touched  &&  f.date.errors }"
-                      />
+                      /> -->
                       <div *ngIf="f.date.touched  &&  f.date.errors" class="invalid-feedback">
                         <div *ngIf="f.date.errors.required">
                           *date is required
