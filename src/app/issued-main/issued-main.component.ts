@@ -28,11 +28,11 @@ export class IssuedMainComponent implements OnInit {
       "Location" : data.Location,
       "Latitude" : data.Latitude,
       "Longitude" : data.Longitude,
-      "Image" : data.Image
+      "Image" : data.Image,
+      "City" : data.City
     }
     this.connect.createPlant(info,data.id);
     this.issuedCetificate.deleteCertificate(data.id);
-    console.log(info)
     this.getData();
   }
 

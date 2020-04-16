@@ -69,7 +69,6 @@ export class ResolvemainService implements Resolve<any> {
 
 
   resolve() {
-    console.log(this.policies)
     return this.policies
   }
 }

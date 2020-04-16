@@ -46,7 +46,6 @@ export class ResolvemainissueService implements Resolve<any>{
    }
 
   resolve() {
-    console.log(this.issuedPlants)
     return this.issuedPlants
   }
 }

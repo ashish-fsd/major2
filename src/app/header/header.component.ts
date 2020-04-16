@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit,AfterViewInit {
         this.router.navigate(['']);
       }
       else{
-        console.log("azs")
         this.username = data.email;
       }
     })

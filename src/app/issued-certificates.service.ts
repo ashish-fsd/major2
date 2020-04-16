@@ -19,7 +19,6 @@ export class IssuedCertificatesService {
         return task.subscribe(url => {
           if (url) {
             item.address = url;
-            console.log(item)
             return item
           }
         })

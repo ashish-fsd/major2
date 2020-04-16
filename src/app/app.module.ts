@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import * as firebase from 'firebase';
+import 'firebase/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,12 +13,12 @@ import { MainComponent } from './main/main.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageModule } from '@angular/fire/storage';
 import { ResolvemainService } from './resolvemain.service';
 import { ResolvecerificateService} from './resolvecerificate.service';
 import { MainwindowComponent } from './mainwindow/mainwindow.component';
@@ -87,6 +88,8 @@ const routes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     QRCodeModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [AngularFirestore,AuthService,AngularFireStorage],
   bootstrap: [AppComponent]

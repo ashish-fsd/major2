@@ -25,8 +25,7 @@ export class CerticateComponent implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.info = data.data;
       this.value = this.info.url
-      this.routeurl = `http://localhost:4200/user/${this.value}`
-      console.log(this.info)
+      this.routeurl = `https://authenticatorapp-2f46b.web.app/user/${this.value}`
     });
   }
 

@@ -28,13 +28,11 @@ export class HomeRightComponent implements OnInit {
 
   onSubmit(){
     if (this.loginform.invalid) {
-      console.log("me")
       return;
     } else {
       const username = this.loginform.controls.username.value;
       const password = this.loginform.controls.password.value;
       this.authService.login(username,password).then(value => {
-        console.log(value.user.uid)
         localStorage.setItem('uid', value.user.uid);
         this.router.navigate(['main']);
       })

@@ -26,7 +26,6 @@ export class MainComponent implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.policies = []
       this.policies = data.data;
-      console.log(data.data)
     });
     this.IssueForm = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -41,7 +40,6 @@ export class MainComponent implements OnInit {
 
   onIssue(plant){
     this.plantData = plant;
-    console.log(plant)
   }
 
   onSubmit(){
@@ -55,7 +53,6 @@ export class MainComponent implements OnInit {
       this.pRef.nativeElement.click()
       this.generateCertificate();
       this.policyService.setInfo(info);
-      // this.getPlants();
       this.router.navigate(['certificate']);
     }
   }
