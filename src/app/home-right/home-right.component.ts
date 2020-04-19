@@ -33,8 +33,14 @@ export class HomeRightComponent implements OnInit {
       const username = this.loginform.controls.username.value;
       const password = this.loginform.controls.password.value;
       this.authService.login(username,password).then(value => {
-        localStorage.setItem('uid', value.user.uid);
+        if(value.user.emailVerified == true)
+        {
+          localStorage.setItem('uid', value.user.uid);
         this.router.navigate(['main']);
+        }
+        else{
+          this.error = "Email not verified.Please check your inbox and verify your account.";
+        }
       })
       .catch(err => {
         this.error = err.message;
