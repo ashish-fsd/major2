@@ -54,7 +54,7 @@ export class IssuedMainComponent implements OnInit {
   }
 
   openCertificate(data){
-    const info = {"Name" : data.issuedTo,"Date" : data.issueDate,"url" : data.id}
+    const info = {"Name" : data.issuedTo,"Date" : data.issueDate.toDate(),"url" : data.id}
     this.connect.setInfo(info);
     this.router.navigate(['certificate']);
   }
