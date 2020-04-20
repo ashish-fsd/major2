@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConnectorService } from '../connector.service';
 import { IssuedCertificatesService  } from "../issued-certificates.service";
 import { Policy } from "../policy.model";
@@ -12,7 +12,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class IssuedMainComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute,private connect : ConnectorService,private issuedCetificate : IssuedCertificatesService,private afStorage : AngularFireStorage) { }
+  constructor(private activatedRoute: ActivatedRoute,private connect : ConnectorService,private issuedCetificate : IssuedCertificatesService,private afStorage : AngularFireStorage,public  router:  Router) { }
 
   issuedData : any = []
 
@@ -51,6 +51,12 @@ export class IssuedMainComponent implements OnInit {
         this.issuedData.push(item)
       })
     })
+  }
+
+  openCertificate(data){
+    const info = {"Name" : data.issuedTo,"Date" : data.issueDate,"url" : data.id}
+    this.connect.setInfo(info);
+    this.router.navigate(['certificate']);
   }
 
 }
